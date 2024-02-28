@@ -10,26 +10,6 @@ if {[tk windowingsystem] == "win32"} {
   set static " static"
 }
 
-font create SunValleyCaptionFont -family "Segoe UI Variable$static Small" -size -12
-font create SunValleyBodyFont -family "Segoe UI Variable$static Text" -size -14
-font create SunValleyBodyStrongFont -family "Segoe UI Variable$static Text Semibold" -size -14
-font create SunValleyBodyLargeFont -family "Segoe UI Variable$static Text" -size -18
-font create SunValleySubtitleFont -family "Segoe UI Variable$static Display Semibold" -size -20
-font create SunValleyTitleFont -family "Segoe UI Variable$static Display Semibold" -size -28
-font create SunValleyTitleLargeFont -family "Segoe UI Variable$static Display Semibold" -size -40
-font create SunValleyDisplayFont -family "Segoe UI Variable$static Display Semibold" -size -68
-
-
-proc config_entry_font {w} {
-  set font_config [$w config -font]
-  if {[lindex $font_config 3] != [lindex $font_config 4]} {
-    return
-  }
-  if {[ttk::style theme use] in {"sun-valley-dark" "sun-valley-light"}} {
-    $w configure -font SunValleyBodyFont
-  }
-}
-
 
 proc config_menus {w} {
   if {[tk windowingsystem] == "aqua" || [tk windowingsystem] == "win32"} {
@@ -80,7 +60,6 @@ proc configure_colors {} {
       -insertwidth 1 \
       -insertcolor $ttk::theme::sv_dark::colors(-fg) \
       -fieldbackground $ttk::theme::sv_dark::colors(-bg) \
-      -font SunValleyBodyFont \
       -borderwidth 0 \
       -relief flat
 
@@ -105,7 +84,6 @@ proc configure_colors {} {
       -insertwidth 1 \
       -insertcolor $ttk::theme::sv_light::colors(-fg) \
       -fieldbackground $ttk::theme::sv_light::colors(-bg) \
-      -font SunValleyBodyFont \
       -borderwidth 0 \
       -relief flat
 
@@ -124,7 +102,4 @@ proc configure_colors {} {
 
 
 bind [winfo class .] <<ThemeChanged>> {+configure_colors}
-bind TEntry <<ThemeChanged>> {+config_entry_font %W}
-bind TCombobox <<ThemeChanged>> {+config_entry_font %W}
-bind TSpinbox <<ThemeChanged>> {+config_entry_font %W}
 bind Menu <<ThemeChanged>> {+config_menus %W}

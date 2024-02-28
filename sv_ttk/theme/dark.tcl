@@ -24,19 +24,19 @@ namespace eval ttk::theme::sv_dark {
   load_images [file join [file dirname [info script]] spritesheet_dark.png]
 
   ttk::style theme create sun-valley-dark -parent clam -settings {
-        
+
     # Button
     ttk::style layout TButton {
       Button.button -children {
         Button.padding -children {
           Button.label -side left -expand 1
-        } 
+        }
       }
     }
 
     ttk::style configure TButton -padding {8 2 8 3} -anchor center -foreground $colors(-fg)
     ttk::style map TButton -foreground [list disabled "#7a7a7a" pressed "#d0d0d0"]
-    
+
     ttk::style element create Button.button image \
       [list $I(button-rest) \
         {selected disabled} $I(button-dis) \
@@ -53,12 +53,12 @@ namespace eval ttk::theme::sv_dark {
       Toolbutton.button -children {
         Toolbutton.padding -children {
           Toolbutton.label -side left -expand 1
-        } 
+        }
       }
     }
 
     ttk::style configure Toolbutton -padding {8 2 8 3} -anchor center
-    
+
     ttk::style element create Toolbutton.button image \
       [list $I(empty) \
         disabled $I(button-dis) \
@@ -73,7 +73,7 @@ namespace eval ttk::theme::sv_dark {
       AccentButton.button -children {
         AccentButton.padding -children {
           AccentButton.label -side left -expand 1
-        } 
+        }
       }
     }
 
@@ -110,7 +110,7 @@ namespace eval ttk::theme::sv_dark {
         {active focus} $I(button-focus-hover) \
         active $I(button-hover) \
         focus $I(button-focus) \
-      ] -border 4 -sticky nsew 
+      ] -border 4 -sticky nsew
 
     ttk::style element create Menubutton.indicator image $I(down) -width 10 -sticky e
 
@@ -123,7 +123,7 @@ namespace eval ttk::theme::sv_dark {
         }
       }
     }
-    
+
     ttk::style configure TOptionMenu -padding {8 2 13 3}
 
     ttk::style element create OptionMenu.button image \
@@ -133,7 +133,7 @@ namespace eval ttk::theme::sv_dark {
         {active focus} $I(button-focus-hover) \
         active $I(button-hover) \
         focus $I(button-focus) \
-      ] -border 4 -sticky nsew 
+      ] -border 4 -sticky nsew
 
     ttk::style element create OptionMenu.indicator image $I(down) -width 10 -sticky e
 
@@ -200,7 +200,7 @@ namespace eval ttk::theme::sv_dark {
       ToggleButton.button -children {
         ToggleButton.padding -children {
           ToggleButton.label -side left -expand 1
-        } 
+        }
       }
     }
 
@@ -278,11 +278,11 @@ namespace eval ttk::theme::sv_dark {
         }
       }
     }
-        
+
     ttk::style configure TCombobox -foreground $colors(-fg) -padding {6 1 0 2}
     ttk::style configure ComboboxPopdownFrame -borderwidth 1 -relief solid
     ttk::style map TCombobox -foreground [list disabled "#757575" pressed "#cfcfcf"]
-    
+
     ttk::style map TCombobox -selectbackground [list \
       {readonly hover} $colors(-selbg) \
       {readonly focus} $colors(-selbg) \
@@ -305,7 +305,7 @@ namespace eval ttk::theme::sv_dark {
         {focus !invalid} $I(textbox-focus) \
         hover $I(textbox-hover) \
       ] -border 5
-        
+
     ttk::style element create Combobox.arrow image $I(down) -width 34 -sticky {}
 
     # Spinbox
@@ -396,7 +396,7 @@ namespace eval ttk::theme::sv_dark {
     # Card
     ttk::style layout Card.TFrame {
       Card.field {
-        Card.padding -expand 1 
+        Card.padding -expand 1
       }
     }
 
@@ -412,7 +412,7 @@ namespace eval ttk::theme::sv_dark {
     }
 
     ttk::style element create Labelframe.border image $I(card) -border 5 -padding 4 -sticky nsew
-    ttk::style configure TLabelframe.Label -font SunValleyCaptionFont
+    ttk::style configure TLabelframe.Label
 
     # Notebook
     ttk::style layout TNotebook {
@@ -432,22 +432,20 @@ namespace eval ttk::theme::sv_dark {
       ] -border 13 -padding {16 14 16 6} -height 32
 
     # Treeview
-    ttk::style configure Heading -font SunValleyCaptionFont
+    ttk::style configure Heading
     ttk::style configure Treeview \
         -background $colors(-bg) \
-        -rowheight [expr {[font metrics SunValleyBodyFont -linespace] + 3}] \
-        -font SunValleyBodyFont
 
     ttk::style map Treeview -background {selected "#292929"} -foreground "selected $colors(-selfg)"
 
     ttk::style element create Treeview.field image $I(card) -border 5 -width 0 -height 0
-    
+
     ttk::style element create Treeheading.cell image \
       [list $I(heading-rest) \
         pressed $I(heading-pressed) \
         active $I(heading-hover)
       ] -border 5 -padding 14 -sticky nsew
-    
+
     ttk::style element create Treeitem.indicator image \
       [list $I(right) \
         user2 $I(empty) \
